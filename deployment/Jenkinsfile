@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'mv /var/lib/jenkins/workspace/vvadmin/deploy_test/src/* /var/www/test.vvadmin.dev/'
+                sh 'rm -r /var/www/test.vvadmin.dev/* && mv /var/lib/jenkins/workspace/vvadmin/deploy_test/src/* /var/www/test.vvadmin.dev/'
             }
         }
     }
