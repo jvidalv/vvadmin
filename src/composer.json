@@ -20,7 +20,8 @@
         "kartik-v/yii2-grid": "3.3.5",
         "kartik-v/yii2-export": "1.4.0",
         "kartik-v/yii2-datecontrol": "1.9.7",
-        "2amigos/yii2-chartjs-widget": "3.0.1"
+        "2amigos/yii2-chartjs-widget": "3.0.1",
+        "ext-dom" : "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
