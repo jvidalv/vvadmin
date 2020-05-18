@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'cp ${WORKSPACE}/src/. /var/www/test.vvadmin.dev/'
+                sh 'cp -r /var/lib/jenkins/workspace/vvadmin/deploy_test/src/. /var/www/test.vvadmin.dev/'
             }
         }
     }

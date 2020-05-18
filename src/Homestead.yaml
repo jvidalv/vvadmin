@@ -13,7 +13,5 @@ sites:
     to: /home/vagrant/code/web
 databases:
   - homestead
-features:
-  - mongodb: true
 name: vvadmin
 hostname: vvadmin
