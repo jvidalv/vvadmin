@@ -27,7 +27,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="login-page">
+<body class="login-page" style="background: grey">
 <?php $this->beginBody() ?>
 <div class="login-box">
     <div class="login-logo">
@@ -35,7 +35,7 @@ AppAsset::register($this);
     </div>
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg"><?= Yii::t('app', 'Norton Solutions'); ?></p>
+            <p class="login-box-msg"><?= Yii::t('app', 'Backend'); ?></p>
 
             <?php $form = ActiveForm::begin(['id' => 'login-form']) ?>
 
@@ -60,7 +60,7 @@ AppAsset::register($this);
 
             <div class="row">
                 <div class="col-12">
-                    <?= Html::submitButton(Yii::t('app', 'Entrar'), ['class' => 'btn btn-primary btn-block']) ?>
+                    <?= Html::submitButton(Yii::t('app', 'Enter'), ['class' => 'btn btn-primary btn-block']) ?>
                 </div>
             </div>
 

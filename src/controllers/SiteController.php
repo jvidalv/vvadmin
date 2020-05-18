@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\components\VController;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -41,7 +40,7 @@ class SiteController extends VController
         }
 
         $model->password = '';
-        return $this->render('login', [
+        return $this->renderPartial('login', [
             'model' => $model,
         ]);
     }
