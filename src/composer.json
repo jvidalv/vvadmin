@@ -1,7 +1,7 @@
 {
     "name": "jvidalv/vvadmin",
-    "description": "Backend for most of my applications",
-    "keywords": ["yii2", "backend", "jvidalv", "php"],
+    "description": "Backend of most of jvidalv apps",
+    "keywords": ["yii2", "backend", "jvidalv", "php", "mongo", "react", "react-native"],
     "homepage": "https://vvadmin.dev",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -12,6 +12,7 @@
         "factorenergia/yii2-widget-alert": "2.0.0",
         "yiisoft/yii2": "2.0.35",
         "yiisoft/yii2-bootstrap4": "~2.0.8",
+        "yiisoft/yii2-mongodb": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "2.1.1",
         "kartik-v/yii2-krajee-base": "2.0.5",
         "kartik-v/yii2-widgets": "3.4.1",
@@ -20,8 +21,7 @@
         "kartik-v/yii2-grid": "3.3.5",
         "kartik-v/yii2-export": "1.4.0",
         "kartik-v/yii2-datecontrol": "1.9.7",
-        "2amigos/yii2-chartjs-widget": "3.0.1",
-        "ext-dom" : "*"
+        "2amigos/yii2-chartjs-widget": "3.0.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

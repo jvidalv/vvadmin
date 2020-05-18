@@ -1,47 +1,88 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
+/**
+ *
+ */
 
+use app\assets\AppAsset;
+use app\models\LoginForm;
+use kartik\select2\Select2;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+factorenergia\adminlte3\assets\FontAwesomeAsset::register($this);
+factorenergia\adminlte3\assets\BasicAsset::register($this);
+AppAsset::register($this);
+
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+    <link rel="icon" type="image/png" href="/images/logo.svg">
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php $this->registerCsrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+</head>
+<body class="login-page">
+<?php $this->beginBody() ?>
+<div class="login-box">
+    <div class="login-logo">
+        <img src="/images/logo.svg" height="80" alt="Norton Solutions"/>
+    </div>
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg"><?= Yii::t('app', 'Norton Solutions'); ?></p>
 
-    <p>Please fill out the following fields to login:</p>
+            <?php $form = ActiveForm::begin(['id' => 'login-form']) ?>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+            <?= $form->field($model, 'username', [
+                'options' => ['class' => 'form-group has-feedback'],
+                'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-user"></span></div></div>',
+                'template' => '{beginWrapper}{input}{endWrapper}',
+                'wrapperOptions' => ['class' => 'input-group mb-3']
+            ])
+                ->label(false)
+                ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'password', [
+                'options' => ['class' => 'form-group has-feedback'],
+                'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
+                'template' => '{beginWrapper}{input}{endWrapper}',
+                'wrapperOptions' => ['class' => 'input-group mb-3']
+            ])
+                ->label(false)
+                ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+            <hr/>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <div class="row">
+                <div class="col-12">
+                    <?= Html::submitButton(Yii::t('app', 'Entrar'), ['class' => 'btn btn-primary btn-block']) ?>
+                </div>
             </div>
+
+            <?php if ($model->hasErrors()) : ?>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <?php
+                        foreach ($model->getErrors() as $errorsLogin) {
+                            echo "<div class=\"alert alert-danger small\"> <i class='fas fa-exclamation-circle mr-1'></i>" . $errorsLogin['0'] . "<div>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php ActiveForm::end(); ?>
+
         </div>
-
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
+        <!-- /.login-card-body -->
     </div>
 </div>
+<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
