@@ -8,9 +8,9 @@ pipeline {
         }
         stage('Configuration') {
             steps {
-                sh 'mv ${WORKSPACE}/src/config/${ENV}/web.php ${WORKSPACE}/src/config/web.php'
-                sh 'mv ${WORKSPACE}/src/config/${ENV}/db.php ${WORKSPACE}/src/config/db.php'
-                sh 'mv ${WORKSPACE}/src/config/${ENV}/params.php ${WORKSPACE}/src/config/params.php'
+                sh 'mv ${WORKSPACE}/src/config/${GIT_BRANCH}/web.php ${WORKSPACE}/src/config/web.php'
+                sh 'mv ${WORKSPACE}/src/config/${GIT_BRANCH}/db.php ${WORKSPACE}/src/config/db.php'
+                sh 'mv ${WORKSPACE}/src/config/${GIT_BRANCH}/params.php ${WORKSPACE}/src/config/params.php'
             }
         }
         stage('Deploy') {
