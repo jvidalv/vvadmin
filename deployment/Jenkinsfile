@@ -6,16 +6,18 @@ pipeline {
                 sh 'cd src/ && composer install'
             }
         }
-        stage('Test') {
+        stage('Configuration') {
             steps {
-                echo '@todo..'
+                sh 'mv ${WORKSPACE}/src/config/${ENV}/web.php ${WORKSPACE}/src/config/web.php'
+                sh 'mv ${WORKSPACE}/src/config/${ENV}/db.php ${WORKSPACE}/src/config/db.php'
+                sh 'mv ${WORKSPACE}/src/config/${ENV}/params.php ${WORKSPACE}/src/config/params.php'
             }
         }
         stage('Deploy') {
             steps {
                 sh 'rm -r /var/www/test.vvadmin.dev/* || true'
-                sh 'chmod -R 777 /var/lib/jenkins/workspace/vvadmin/deploy_test/src/web/assets && chmod -R 777 /var/lib/jenkins/workspace/vvadmin/deploy_test/src/runtime'
-                sh 'mv /var/lib/jenkins/workspace/vvadmin/deploy_test/src/* /var/www/test.vvadmin.dev/'
+                sh 'chmod -R 777 ${WORKSPACE}/src/web/assets && chmod -R 777 /var/lib/jenkins/workspace/vvadmin/deploy_test/src/runtime'
+                sh 'mv ${WORKSPACE}/src/* /var/www/test.vvadmin.dev/'
             }
         }
     }
