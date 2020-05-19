@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'rm -r /var/www/test.vvadmin.dev/* && mv /var/lib/jenkins/workspace/vvadmin/deploy_test/src/* /var/www/test.vvadmin.dev/'
+                sh 'rm -r /var/www/test.vvadmin.dev/* || true'
+                sh 'chmod -R 777 /var/lib/jenkins/workspace/vvadmin/deploy_test/src/web/assets && chmod -R 777 /var/lib/jenkins/workspace/vvadmin/deploy_test/src/runtime'
+                sh 'mv /var/lib/jenkins/workspace/vvadmin/deploy_test/src/* /var/www/test.vvadmin.dev/'
             }
         }
     }
