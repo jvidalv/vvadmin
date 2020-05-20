@@ -42,7 +42,6 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
         'urlManager' => [
             'hostInfo' => 'http://vvadmin/',
             'enablePrettyUrl' => true,
@@ -65,5 +64,8 @@ $config = [
     ],
     'params' => $params,
 ];
+
+$config['components'] = array_merge($config['components'], $db);
+
 
 return $config;
