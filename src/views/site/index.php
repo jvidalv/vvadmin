@@ -16,7 +16,7 @@ $this->title = 'Dashboard';
                     <h5 class="m-0">Featured</h5>
                 </div>
                 <div class="card-body">
-                    
+
 
                     <h6 class="card-title">Special title treatment</h6>
 
