@@ -1,14 +1,23 @@
 <?php
 
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '',
-    'charset' => 'utf8',
+$ip = $_SERVER['DB_IP'];
+$db = $_SERVER['DB_NAME'];
+$name = $_SERVER['DB_USER'];
+$pw = $_SERVER['DB_PASSWORD'];
 
-    // Schema cache options (for production environment)
-    //'enableSchemaCache' => true,
-    //'schemaCacheDuration' => 60,
-    //'schemaCache' => 'cache',
+$mongo_db = $_SERVER['DB_MONGO_URI'];
+
+
+return [
+    'db' => [
+        'class' => 'yii\db\Connection',
+        'dsn' =>  "mysql:host=$ip;dbname=$db",
+        'username' => $name,
+        'password' => $pw,
+        'charset' => 'utf8',
+    ],
+    'db_horoscope' => [
+        'class' => '\yii\mongodb\Connection',
+        'dsn' => $mongo_db . 'horoscopeDb?authSource=admin',
+    ],
 ];

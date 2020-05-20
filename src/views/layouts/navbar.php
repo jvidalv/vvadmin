@@ -1,5 +1,6 @@
 <?php
 
+use app\utils\Env;
 use yii\helpers\Url;
 
 ?>
@@ -150,6 +151,12 @@ use yii\helpers\Url;
         <!--                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>-->
         <!--            </div>-->
         <!--        </li>-->
+        <li class="nav-item">
+            <a class="nav-link" href="#" title="Environment">
+                <i class="fas fa-database mr-2"></i>
+                <span class="badge badge-warning navbar-badge"><?= Env::getEnv()?></span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="<?= Url::toRoute('site/logout') ?>">
                 <i class="fas fa-sign-out-alt"></i>

@@ -6,7 +6,7 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', 'debug'],
+    'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -56,16 +56,11 @@ $config = [
         ],
     ],
     'modules' => [
-        'debug' => [
-            'class' => 'yii\debug\Module',
-            'allowedIPs' => ['*'],
-        ],
-        'gii' => [
-            'class' => 'yii\gii\Module',
-            'allowedIPs' => ['*'],
-        ],
         'gridview' => [
             'class' => '\kartik\grid\Module'
+        ],
+        'api' => [
+            'class' => 'app\modules\api\Api',
         ],
     ],
     'params' => $params,

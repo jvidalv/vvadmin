@@ -19,7 +19,8 @@
         "kartik-v/yii2-icons": "1.4.5",
         "kartik-v/yii2-grid": "3.3.5",
         "kartik-v/yii2-datecontrol": "1.9.7",
-        "2amigos/yii2-chartjs-widget": "3.0.1"
+        "2amigos/yii2-chartjs-widget": "3.0.1",
+        "yiisoft/yii2-mongodb": "^2.1@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

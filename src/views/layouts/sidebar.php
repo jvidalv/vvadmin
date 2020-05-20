@@ -1,15 +1,14 @@
 <?php
 
+use app\utils\Env;
 use factorenergia\adminlte3\widgets\Menu;
 use yii\helpers\Url;
 
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?= Url::home() ?>" class="brand-link">
-        <img src="/images/logo.svg" alt="vvadmin logo" class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-        <span class="brand-text font-weight-light">Backend</span>
+    <a href="<?= Url::home() ?>" class="brand-link py-1 text-center">
+        <img src="/images/logo.svg" alt="vvadmin logo" style="height: 48px">
     </a>
 
     <!-- Sidebar -->
@@ -30,14 +29,14 @@ use yii\helpers\Url;
             <?php
             echo Menu::widget([
                 'items' => [
-                    [
-                        'label' => 'vvlog',
-                        'icon' => 'home',
-                        'url' => ['https://factorenergia.com'],
-                    ],
-                    ['label' => 'Development', 'header' => true, 'visible'],
-                    ['label' => 'Gii', 'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
-                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
+                    ['label' => 'Development', 'header' => true, 'visible', 'visible' => Env::isDev()],
+                    ['label' => 'Gii', 'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank', 'visible' => Env::isDev()],
+                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank', 'visible' => Env::isDev()],
+
+                    ['label' => 'Astrale', 'header' => true, 'visible'],
+                    ['label' => 'Users', 'icon' => 'users', 'url' => '#'],
+                    ['label' => 'Daily', 'icon' => 'calendar-day', 'url' => '#'],
+                    ['label' => 'Compatibility', 'icon' => 'grin-hearts', 'url' => '#'],
                 ],
             ]);
             ?>
