@@ -42,7 +42,6 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
         'urlManager' => [
             'hostInfo' => 'http://vvadmin/',
             'enablePrettyUrl' => true,
@@ -67,8 +66,13 @@ $config = [
         'gridview' => [
             'class' => '\kartik\grid\Module'
         ],
+        'api' => [
+            'class' => 'app\modules\api\Api',
+        ],
     ],
     'params' => $params,
 ];
+
+$config['components'] = array_merge($config['components'], $db);
 
 return $config;
