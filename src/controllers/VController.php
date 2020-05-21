@@ -13,6 +13,9 @@ use yii\web\Controller;
  */
 class VController extends Controller
 {
+    /**
+     * @return array|array[]
+     */
     public function behaviors()
     {
         return [
