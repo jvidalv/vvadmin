@@ -6,7 +6,7 @@ use app\models\astrale\Compatibility;
 use app\models\astrale\Daily;
 
 /**
- * Class ApiController
+ * Class AstraleController
  * @package app\modules\api\controllers
  */
 class AstraleController extends ApiController

@@ -2,9 +2,7 @@
 
 namespace app\controllers;
 
-use Yii;
 use yii\filters\AccessControl;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 
 /**
@@ -13,6 +11,7 @@ use yii\web\Controller;
  */
 class VController extends Controller
 {
+
     /**
      * @return array|array[]
      */
