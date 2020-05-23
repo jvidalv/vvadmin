@@ -15,7 +15,7 @@ class Compatibility extends \yii\mongodb\ActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->get('db_horoscope');
+        return Yii::$app->get('db_astrale');
     }
 
     /**
@@ -23,7 +23,7 @@ class Compatibility extends \yii\mongodb\ActiveRecord
      */
     public static function collectionName()
     {
-        return 'horoscope_stale';
+        return 'stale';
     }
 
     /**

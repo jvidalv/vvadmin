@@ -16,8 +16,8 @@ return [
         'password' => $pw,
         'charset' => 'utf8',
     ],
-    'db_horoscope' => [
+    'db_astrale' => [
         'class' => '\yii\mongodb\Connection',
-        'dsn' => $mongo_db . 'horoscopeDb?authSource=admin',
+        'dsn' => $mongo_db . 'astrale?authSource=admin',
     ],
 ];
