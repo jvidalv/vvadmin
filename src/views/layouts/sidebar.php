@@ -34,9 +34,9 @@ use yii\helpers\Url;
                     ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank', 'visible' => Env::isDev()],
 
                     ['label' => 'Astrale', 'header' => true, 'visible'],
-                    ['label' => 'Users', 'icon' => 'users', 'url' => '#'],
-                    ['label' => 'Daily', 'icon' => 'calendar-day', 'url' => '#'],
-                    ['label' => 'Compatibility', 'icon' => 'grin-hearts', 'url' => '#'],
+                    ['label' => 'Users', 'icon' => 'users', 'url' => ['/astrale/users/index']],
+                    ['label' => 'Daily', 'icon' => 'calendar-day', 'url' => ['/astrale/daily/index']],
+                    ['label' => 'Messages', 'icon' => 'envelope', 'url' => ['/astrale/messages/index']],
                 ],
             ]);
             ?>

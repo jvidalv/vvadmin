@@ -61,6 +61,9 @@ $config = [
         'api' => [
             'class' => 'app\modules\api\Api',
         ],
+        'astrale' => [
+            'class' => 'app\modules\astrale\Astrale',
+        ],
     ],
     'params' => $params,
 ];

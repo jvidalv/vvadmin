@@ -10,7 +10,12 @@ use yii\base\Module;
  */
 class Api extends Module
 {
+    /**
+     * @var string
+     */
     public $controllerNamespace = 'app\modules\api\controllers';
+    /**
+     * @var string
+     */
     public $defaultRoute = 'api';
-
 }

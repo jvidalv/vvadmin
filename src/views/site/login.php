@@ -35,7 +35,7 @@ AppAsset::register($this);
     </div>
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg"><?= Yii::t('app', 'Backend'); ?></p>
+            <p class="login-box-msg"><?= Yii::t('app', 'Welcome back!'); ?></p>
 
             <?php $form = ActiveForm::begin(['id' => 'login-form']) ?>
 

@@ -31,7 +31,7 @@ class ApiController extends Controller
         ];
         $behaviors['contentNegotiator']['formats']['text/html'] = Response::FORMAT_JSON;
         $behaviors['authenticator'] = [
-            'class' => ApiAuth::className(),
+            'class' => ApiAuth::class,
         ];
         return $behaviors;
     }
