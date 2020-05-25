@@ -40,7 +40,7 @@ class AstraleController extends ApiController
      */
     public function actionDaily(string $day, string $sign): ?Daily
     {
-        return Daily::findOne(['sign' => $sign, 'day' => $day]);
+        return Daily::findOne(['sign' => $sign, 'day' => $day]) ?? null;
     }
 
     /**
@@ -50,7 +50,7 @@ class AstraleController extends ApiController
      */
     public function actionCompatibility(string $sign1, string $sign2): ?Compatibility
     {
-        return Compatibility::findOne(['sign1' => $sign1, 'sign2' => $sign2]);
+        return Compatibility::findOne(['sign1' => $sign1, 'sign2' => $sign2]) ?? null;
     }
 
     /**
