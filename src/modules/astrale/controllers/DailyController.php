@@ -21,7 +21,7 @@ class DailyController extends VController
      */
     public function actionIndex()
     {
-        $query = Daily::find()->orderBy(['fecha' => 'DESC']);
+        $query = Daily::find()->orderBy(['day' => SORT_DESC]);
 
         $provider = new ActiveDataProvider([
             'query' => $query,

@@ -10,5 +10,5 @@ use yii\helpers\Html;
         <?= Html::tag('span', Git::getCurrentVersion(), ['class' => 'label label-primary']); ?>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; <?= date("Y") ?>  <?= Html::a('vvadmin', 'mailto:desarroladores@factorenergia.com') ?>.</strong> Todos los derechos reservados.
+    <strong>Copyright &copy; <?= date("Y") ?>  <?= Html::a('app', 'mailto:josepvidalvidal@gmail.com') ?>.</strong> Todos los derechos reservados.
 </footer>
