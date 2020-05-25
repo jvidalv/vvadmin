@@ -20,17 +20,18 @@ class AstraleController extends ApiController
      */
     public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'daily' => ['GET'],
-                    'compatibility' => ['GET'],
-                    'message' => ['POST'],
-                    'user' => ['POST'],
-                ],
+        $behaviors = parent::behaviors();
+        $behaviors['verbs'] = [
+            'class' => VerbFilter::class,
+            'actions' => [
+                'daily' => ['GET'],
+                'compatibility' => ['GET'],
+                'message' => ['POST'],
+                'user' => ['POST'],
             ],
         ];
+
+        return $behaviors;
     }
 
     /**
