@@ -11,6 +11,7 @@ use yii\helpers\Html;
  * @property string $_id
  * @property string $message
  * @property string $email
+ * @property string $astrologer
  * @property bool $answered
  */
 class Message extends \yii\mongodb\ActiveRecord
@@ -37,12 +38,12 @@ class Message extends \yii\mongodb\ActiveRecord
      */
     public function attributes()
     {
-        return ['_id', 'email', 'message', 'answered'];
+        return ['_id', 'email', 'astrologer', 'message', 'answered'];
     }
 
     public function getAnsweredHtml()
     {
         $ans = $this->answered;
-        return Html::a($ans ? 'Yes' : 'No', ['answered?id=' .  $this->_id], ['class' => "badge badge-" .  ( $ans ? 'success' : 'warning' ), 'data-confirm' => 'Are you sure?']);
+        return Html::a($ans ? 'Yes' : 'No', ['answered?id=' . $this->_id], ['class' => "badge badge-" . ($ans ? 'success' : 'warning'), 'data-confirm' => 'Are you sure?']);
     }
 }
