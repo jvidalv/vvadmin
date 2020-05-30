@@ -8,6 +8,7 @@ use app\models\astrale\Message;
 use app\models\astrale\User;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * Class AstraleController
@@ -55,17 +56,20 @@ class AstraleController extends ApiController
     }
 
     /**
-     * @return bool|null
+     * @return bool
      * @throws \Exception
      */
-    public function actionMessage(): ?bool
+    public function actionMessage(): bool
     {
-        $email = Yii::$app->request->post('email');
-        $message = Yii::$app->request->post('message');
+        $params = json_decode(Yii::$app->request->getRawBody());
+        $email = $params->email;
+        $message = $params->message;
+        $astrologer = $params->astrologer;
 
         $m = new Message();
         $m->message = $message;
         $m->email = $email;
+        $m->astrologer = $astrologer;
         $m->answered = 0;
 
         return $m->insert();
@@ -83,5 +87,11 @@ class AstraleController extends ApiController
         $m->setAttributes($params);
 
         return $m->insert();
+    }
+
+    public function actionPrivacyPolicy(): ?string
+    {
+        Yii::$app->response->format = Response::FORMAT_HTML;
+        return $this->renderPartial('@app/views/app/privacy-policy');
     }
 }
