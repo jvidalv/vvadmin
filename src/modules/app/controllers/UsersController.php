@@ -1,8 +1,9 @@
 <?php
 
-namespace app\modules\astrale\controllers;
+namespace app\modules\app\controllers;
 
 use app\controllers\VController;
+use app\models\app\User;
 use app\models\astrale\Compatibility;
 use app\models\astrale\Daily;
 use app\models\astrale\Message;
@@ -14,14 +15,14 @@ use yii\filters\VerbFilter;
  * Class DailyController
  * @package app\modules\astrale\controllers
  */
-class DailyController extends AstraleController
+class UsersController extends AppController
 {
     /**
      * @return string
      */
     public function actionIndex()
     {
-        $query = Daily::find()->orderBy(['day' => SORT_DESC]);
+        $query = User::find();
 
         $provider = new ActiveDataProvider([
             'query' => $query,

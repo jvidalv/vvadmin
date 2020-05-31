@@ -89,10 +89,4 @@ class AstraleController extends ApiController
 
         return $m->insert();
     }
-
-    public function actionPrivacyPolicy(): ?string
-    {
-        Yii::$app->response->format = Response::FORMAT_HTML;
-        return $this->renderPartial('@app/views/app/privacy-policy');
-    }
 }

@@ -20,7 +20,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\app\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -63,6 +63,9 @@ $config = [
         ],
         'astrale' => [
             'class' => 'app\modules\astrale\Astrale',
+        ],
+        'app' => [
+            'class' => 'app\modules\app\App',
         ],
     ],
     'params' => $params,

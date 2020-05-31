@@ -1,27 +1,24 @@
 <?php
 
-namespace app\modules\astrale\controllers;
+namespace app\modules\app\controllers;
 
 use app\controllers\VController;
-use app\models\astrale\Compatibility;
-use app\models\astrale\Daily;
+use app\models\app\Contact;
 use app\models\astrale\Message;
-use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
 
 /**
- * Class DailyController
+ * Class MessageController
  * @package app\modules\astrale\controllers
  */
-class DailyController extends AstraleController
+class MessagesController extends AppController
 {
     /**
      * @return string
      */
     public function actionIndex()
     {
-        $query = Daily::find()->orderBy(['day' => SORT_DESC]);
+        $query = Contact::find();
 
         $provider = new ActiveDataProvider([
             'query' => $query,
@@ -33,5 +30,20 @@ class DailyController extends AstraleController
         return $this->render('index', [
             'provider' => $provider,
         ]);
+    }
+
+    /**
+     * @param string $id
+     * @return string
+     * @throws \Exception
+     */
+    public function actionAnswered(string $id)
+    {
+        $query = Message::findOne($id);
+
+        $query->answered = !$query->answered;
+        $query->update();
+
+        return $this->redirect('index');
     }
 }

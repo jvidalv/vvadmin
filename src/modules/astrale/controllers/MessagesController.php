@@ -10,7 +10,7 @@ use yii\data\ActiveDataProvider;
  * Class MessageController
  * @package app\modules\astrale\controllers
  */
-class MessagesController extends VController
+class MessagesController extends AstraleController
 {
     /**
      * @return string
