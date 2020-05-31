@@ -19,6 +19,11 @@ $this->title = 'Astrale';
           type="text/css">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <meta property="og:site_name" content="Astrale – Horoscope of the Zodiac">
+    <meta property="og:title" content="Astrale – Horoscope of the Zodiac" />
+    <meta property="og:description" content="Daily horoscopes made by professional and experienced astrologers." />
+    <meta property="og:image" itemprop="image" content="/images/astrale/logo.png">
+    <meta property="og:type" content="website" />
     <?php $this->head() ?>
 </head>
 <body>
@@ -33,7 +38,7 @@ $this->title = 'Astrale';
 </nav>
 <div class="position-relative overflow-hidden p-3 p-md-4 m-md-3 mt-3  text-center bg-light height-100-mobile background-gradient">
     <div class="logo-container col-md-5 p-lg-5 mx-auto my-5">
-        <img src="/images/astrale/logo.png" class="d-block mx-auto logo" height="200"/>
+        <img src="/images/astrale/logo.png" class="d-block mx-auto logo" height="200" width="200"/>
         <p class="lead font-weight-normal text-light mt-4">
             Discover what the stars are predicting for your future. Our <u>daily horoscopes</u> are made by professional and experienced astrologers using the best methodologies of classical astrology.
         </p>
