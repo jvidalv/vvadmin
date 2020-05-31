@@ -120,7 +120,7 @@ footer h5 {
 }
 
 
-/** MEDIA QUERYS **/
+/** MEDIA QUERY **/
 @media (min-width: 768px) {
     .flex-md-equal > * {
         -ms-flex: 1;
@@ -172,19 +172,13 @@ footer h5 {
 
     .product-device {
         bottom: -10%;
-        opacity: 0.1;
-        display: none !important
+        opacity: 0.5;
     }
-
 }
 
 @media (max-width: 550px) {
     .logo {
         width: 300px;
         margin-left: inherit !important
-    }
-
-    .product-device {
-        display: none !important
     }
 }
