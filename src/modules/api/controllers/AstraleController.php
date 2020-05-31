@@ -84,7 +84,8 @@ class AstraleController extends ApiController
         $params = json_decode(Yii::$app->request->getRawBody(), true);
 
         $m = new User();
-        $m->setAttributes($params);
+        $m->setAttributes($params, false);
+        $m->created_at = Date('Y-m-d H:i:s');
 
         return $m->insert();
     }

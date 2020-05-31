@@ -40,6 +40,6 @@ class User extends \yii\mongodb\ActiveRecord
      */
     public function attributes()
     {
-        return ['_id', 'name', 'birth_date', 'sign', 'relationship_status', 'sex', 'number', 'expo_token', 'created_at'];
+        return ['_id', 'expo_token', 'language',  'name', 'birthDate', 'sign', 'relationship', 'sex', 'number', 'created_at'];
     }
 }
