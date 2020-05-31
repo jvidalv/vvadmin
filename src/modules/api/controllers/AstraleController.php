@@ -81,7 +81,7 @@ class AstraleController extends ApiController
      */
     public function actionUser(): ?bool
     {
-        $params = Yii::$app->request->post();
+        $params = json_decode(Yii::$app->request->getRawBody(), true);
 
         $m = new User();
         $m->setAttributes($params);
