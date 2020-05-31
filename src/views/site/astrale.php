@@ -19,6 +19,11 @@ $this->title = 'Astrale';
           type="text/css">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <meta property="og:site_name" content="Astrale – Horoscope of the Zodiac">
+    <meta property="og:title" content="Astrale – Horoscope of the Zodiac" />
+    <meta property="og:description" content="Daily horoscopes made by professional and experienced astrologers." />
+    <meta property="og:image" itemprop="image" content="/images/astrale/logo.png">
+    <meta property="og:type" content="website" />
     <?php $this->head() ?>
 </head>
 <body>
