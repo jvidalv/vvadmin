@@ -23,7 +23,7 @@ class VController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login'],
+                        'actions' => ['login', 'contact', 'astrale', 'privacy-policy'],
                         'roles' => ['?'],
                     ],
                     [

@@ -6,6 +6,7 @@
 
 use app\assets\AppAsset;
 use app\models\LoginForm;
+use kartik\alert\Alert;
 use kartik\select2\Select2;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
@@ -13,8 +14,7 @@ use yii\helpers\Html;
 factorenergia\adminlte3\assets\FontAwesomeAsset::register($this);
 factorenergia\adminlte3\assets\BasicAsset::register($this);
 AppAsset::register($this);
-
-$this->title = 'Login';
+$this->title = 'Contact';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -36,32 +36,48 @@ $this->title = 'Login';
     </div>
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg"><?= Yii::t('app', 'Welcome back!'); ?></p>
-
-            <?php $form = ActiveForm::begin(['id' => 'login-form']) ?>
-
-            <?= $form->field($model, 'username', [
+            <?php if($model->hash): ?>
+            <?= Alert::widget(['type' => Alert::TYPE_INFO, 'body' => 'Thanks for contacting us', 'closeButton' => false]) ?>
+                <p class="login-box-msg">Here is your message id #<?= $model->hash ?></p>
+            <?php else: ?>
+                <p class="login-box-msg"><?= Yii::t('app', 'Contact with us'); ?></p>
+                <?php $form = ActiveForm::begin(['id' => 'login-form']) ?>
+            <?= $form->field($model, 'app', [
+                'options' => ['class' => 'form-group has-feedback'],
+                'wrapperOptions' => ['class' => 'mb-3']
+            ])
+                ->label(false)
+                ->widget(Select2::class, ['data' => ['astrale' => 'Astrale', 'festesdepoble' => 'Festes de Poble'], 'hideSearch' => true, 'options' => ['placeholder' => $model->getAttributeLabel('app')]]) ?>
+            <?= $form->field($model, 'name', [
                 'options' => ['class' => 'form-group has-feedback'],
                 'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-user"></span></div></div>',
                 'template' => '{beginWrapper}{input}{endWrapper}',
                 'wrapperOptions' => ['class' => 'input-group mb-3']
             ])
                 ->label(false)
-                ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
+                ->textInput(['placeholder' => $model->getAttributeLabel('name')]) ?>
 
-            <?= $form->field($model, 'password', [
+            <?= $form->field($model, 'email', [
                 'options' => ['class' => 'form-group has-feedback'],
-                'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
+                'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
                 'template' => '{beginWrapper}{input}{endWrapper}',
                 'wrapperOptions' => ['class' => 'input-group mb-3']
             ])
                 ->label(false)
-                ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+                ->textInput(['placeholder' => $model->getAttributeLabel('email')]) ?>
+
+            <?= $form->field($model, 'question', [
+                'options' => ['class' => 'form-group has-feedback'],
+                'wrapperOptions' => ['class' => 'input-group mb-3']
+            ])
+                ->label(false)
+                ->textarea(['placeholder' => $model->getAttributeLabel('question')]) ?>
+
             <hr/>
 
             <div class="row">
                 <div class="col-12">
-                    <?= Html::submitButton(Yii::t('app', 'Enter'), ['class' => 'btn btn-primary btn-block']) ?>
+                    <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary btn-block']) ?>
                 </div>
             </div>
 
@@ -78,7 +94,7 @@ $this->title = 'Login';
             <?php endif; ?>
 
             <?php ActiveForm::end(); ?>
-
+            <?php endif; ?>
         </div>
         <!-- /.login-card-body -->
     </div>

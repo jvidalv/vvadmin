@@ -33,6 +33,10 @@ use yii\helpers\Url;
                     ['label' => 'Gii', 'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank', 'visible' => Env::isDev()],
                     ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank', 'visible' => Env::isDev()],
 
+                    ['label' => 'App', 'header' => true, 'visible'],
+                    ['label' => 'Users', 'icon' => 'users', 'url' => ['/app/users/index']],
+                    ['label' => 'Contacts', 'icon' => 'envelope', 'url' => ['/app/messages/index']],
+
                     ['label' => 'Astrale', 'header' => true, 'visible'],
                     ['label' => 'Users', 'icon' => 'users', 'url' => ['/astrale/users/index']],
                     ['label' => 'Daily', 'icon' => 'calendar-day', 'url' => ['/astrale/daily/index']],

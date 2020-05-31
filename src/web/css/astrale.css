@@ -1,0 +1,190 @@
+body {
+    background: #232323;
+}
+
+.container {
+    max-width: 960px;
+}
+
+/** HEADER **/
+.site-header {
+    background-color: #4e476dc9;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.site-header a {
+    color: white;
+    transition: ease-in-out color .15s;
+}
+
+.site-header a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/** DUMMY DEVICES **/
+
+.product-device {
+    position: absolute;
+    right: 10%;
+    bottom: -30%;
+    width: 300px;
+    height: 540px;
+    background-color: #333;
+    border-radius: 21px;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.product-device::before {
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    bottom: 10%;
+    left: 10px;
+    content: "";
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 5px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.product-device-2 {
+    top: -25%;
+    right: auto;
+    bottom: 0;
+    left: 5%;
+    background-color: #e5e5e5;
+}
+
+.daily::before {
+    background-image: url('/images/astrale/daily.png');
+}
+
+.learn::before {
+    background-image: url('/images/astrale/learn.png')
+}
+
+.height-241 {
+    height: 241px;
+    overflow: hidden;
+}
+
+.background-gradient {
+    background: linear-gradient(89deg, #4e476d, #4e476dc9);
+    background-size: 100%;
+}
+
+.btn-outline-primary:hover {
+    background-color: #587fa4;
+    border-color: #587fa4;
+}
+
+.btn-outline-primary {
+    background-color: white;
+    border-color: #587fa4;
+    color: #587fa4;
+}
+
+/** FOOTER **/
+footer h5 {
+    color: white;
+}
+/** UTILS **/
+.product-device {
+    opacity: 0.7
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.flex-equal > * {
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+
+/** MEDIA QUERYS **/
+@media (min-width: 768px) {
+    .flex-md-equal > * {
+        -ms-flex: 1;
+        -webkit-box-flex: 1;
+        flex: 1;
+    }
+
+}
+
+@media (max-width: 1500px) {
+    .logo {
+        margin-left: -30px !important
+    }
+}
+
+@media (max-width: 1300px) {
+    .logo-container {
+        z-index: 999
+    }
+
+    .logo {
+        width: 300px;
+        margin-left: -60px !important
+    }
+
+    .product-device {
+        width: 250px;
+        height: 436px;
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 300px;
+        margin-left: inherit !important
+    }
+
+    .height-100-mobile {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-device-2 {
+        top: -10%
+    }
+
+    .product-device {
+        bottom: -10%;
+        opacity: 0.1;
+        display: none !important
+    }
+
+}
+
+@media (max-width: 550px) {
+    .logo {
+        width: 300px;
+        margin-left: inherit !important
+    }
+
+    .product-device {
+        display: none !important
+    }
+}
