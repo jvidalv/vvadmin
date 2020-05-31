@@ -154,10 +154,6 @@ footer h5 {
 }
 
 @media (max-width: 768px) {
-    .logo {
-        width: 300px;
-        margin-left: inherit !important
-    }
 
     .height-100-mobile {
         height: 100vh;
@@ -176,9 +172,4 @@ footer h5 {
     }
 }
 
-@media (max-width: 550px) {
-    .logo {
-        width: 300px;
-        margin-left: inherit !important
-    }
 }
