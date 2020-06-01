@@ -6,6 +6,7 @@ use app\models\astrale\Compatibility;
 use app\models\astrale\Daily;
 use app\models\astrale\Message;
 use app\models\astrale\User;
+use Exception;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Response;
@@ -57,7 +58,7 @@ class AstraleController extends ApiController
 
     /**
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
     public function actionMessage(): bool
     {
@@ -77,16 +78,20 @@ class AstraleController extends ApiController
 
     /**
      * @return bool|null
-     * @throws \Exception
+     * @throws Exception
      */
-    public function actionUser(): ?bool
+    public function actionUser(): bool
     {
         $params = json_decode(Yii::$app->request->getRawBody(), true);
-
-        $m = new User();
-        $m->setAttributes($params, false);
-        $m->created_at = Date('Y-m-d H:i:s');
-
-        return $m->insert();
+        $user = User::findOne(['expo_token' => $params['expo_token']]);
+        if($user){
+            $user->setAttributes($params, false);
+            return $user->save();
+        } else {
+            $user = new User();
+            $user->setAttributes($params, false);
+            $user->created_at = Date('Y-m-d H:i:s');
+            return $user->insert();
+        }
     }
 }
