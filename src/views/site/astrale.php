@@ -47,20 +47,20 @@ $this->title = 'Astrale';
     <div class="daily product-device product-device-2 box-shadow d-md-block"></div>
 </div>
 <div id="moduls" class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+    <div class="bg-light mr-md-3 py-4 px-3 py-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-4">
+            <img src="/images/android.svg" class="d-block mx-auto" height="100"/>
+            <div class="my-4">
+                <a class="btn btn-dark" href="https://play.google.com/store/apps/details?id=josep.astrale">Play Store</a>
+            </div>
+        </div>
+    </div>
     <div class="bg-dark mr-md-3 py-4 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
         <div class="my-4">
             <img src="/images/ios.png" class="d-block mx-auto" height="100"/>
         </div>
         <div class="my-4">
             <a class="btn btn-info" href="/contactar">App Store</a>
-        </div>
-    </div>
-    <div class="bg-light mr-md-3 py-4 px-3 py-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-4">
-            <img src="/images/android.svg" class="d-block mx-auto" height="100"/>
-            <div class="my-4">
-                <a class="btn btn-dark" href="/contactar">Play Store</a>
-            </div>
         </div>
     </div>
 </div>
