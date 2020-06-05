@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh 'mv -f ${WORKSPACE}/src/config/${GIT_BRANCH}/web.php ${WORKSPACE}/src/config/web.php'
                 sh 'mv -f ${WORKSPACE}/src/config/${GIT_BRANCH}/params.php ${WORKSPACE}/src/config/params.php'
+                sh 'cp /usr/secrets/vvadmin/src/config/console_db.php ${WORKSPACE}/src/config/'
             }
         }
         stage('Deploy') {

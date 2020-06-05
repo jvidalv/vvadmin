@@ -7,7 +7,6 @@ $pw = $_SERVER['DB_PASSWORD'];
 
 $mongo_db = $_SERVER['DB_MONGO_URI'];
 
-
 return [
     'db' => [
         'class' => 'yii\db\Connection',

@@ -1,2 +1,3 @@
 # phpstorm project files
 .idea
+src/config/console_db.php

@@ -14,6 +14,7 @@ use Yii;
  * @property string $sex
  * @property int $number
  * @property string $expo_token
+ * @property string $language
  * @property string $created_at
  */
 class User extends \yii\mongodb\ActiveRecord
