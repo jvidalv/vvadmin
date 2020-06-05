@@ -20,7 +20,8 @@
         "kartik-v/yii2-grid": "3.3.5",
         "kartik-v/yii2-datecontrol": "1.9.7",
         "2amigos/yii2-chartjs-widget": "3.0.1",
-        "yiisoft/yii2-mongodb": "^2.1@dev"
+        "yiisoft/yii2-mongodb": "^2.1@dev",
+        "alymosul/exponent-server-sdk-php": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

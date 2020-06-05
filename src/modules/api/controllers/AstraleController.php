@@ -77,14 +77,16 @@ class AstraleController extends ApiController
     }
 
     /**
-     * @return bool|null
+     * @return bool
      * @throws Exception
      */
     public function actionUser(): bool
     {
+        $user = null;
         $params = json_decode(Yii::$app->request->getRawBody(), true);
-        $expoToken = $params['expo_token'] ?? -1;
-        $user = User::findOne(['expo_token' => $expoToken]);
+        if(isset($params['expo_token'])){
+            $user = User::findOne(['expo_token' => $params['expo_token']]);
+        }
         if($user){
             $user->setAttributes($params, false);
             return $user->save();

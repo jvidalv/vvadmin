@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad7204c646a1c559c3a79a41ad1502d7",
+    "content-hash": "9837eefc1d61a03eaede6d82cb74c793",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -110,11 +110,55 @@
             "time": "2020-04-01T23:06:25+00:00"
         },
         {
+            "name": "alymosul/exponent-server-sdk-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Alymosul/exponent-server-sdk-php.git",
+                "reference": "7f8039153bbe89a55f75d00a2ba107b9842c6ae4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Alymosul/exponent-server-sdk-php/zipball/7f8039153bbe89a55f75d00a2ba107b9842c6ae4",
+                "reference": "7f8039153bbe89a55f75d00a2ba107b9842c6ae4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ExponentPhpSDK\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aly Suleiman",
+                    "email": "alymosul@gmail.com"
+                }
+            ],
+            "description": "Server-side library for working with Expo push notifications using PHP",
+            "keywords": [
+                "expo",
+                "exponent",
+                "notifications",
+                "push"
+            ],
+            "time": "2020-05-15T15:19:41+00:00"
+        },
+        {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -135,7 +179,7 @@
             "version": "3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
             },
             "dist": {
@@ -4982,6 +5026,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "yiisoft/yii2-mongodb": 20,
+        "alymosul/exponent-server-sdk-php": 20,
         "laravel/homestead": 20
     },
     "prefer-stable": false,
