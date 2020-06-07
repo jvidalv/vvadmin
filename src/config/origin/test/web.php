@@ -67,6 +67,9 @@ $config = [
         'app' => [
             'class' => 'app\modules\app\App',
         ],
+        'blog' => [
+            'class' => 'app\modules\blog\Blog',
+        ],
     ],
     'params' => $params,
 ];
