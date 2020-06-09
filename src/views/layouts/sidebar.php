@@ -37,6 +37,10 @@ use yii\helpers\Url;
                     ['label' => 'Users', 'icon' => 'users', 'url' => ['/app/users/index']],
                     ['label' => 'Contacts', 'icon' => 'envelope', 'url' => ['/app/messages/index']],
 
+                    ['label' => 'Blogs', 'header' => true, 'visible'],
+                    ['label' => 'Articles', 'icon' => 'quote-right', 'url' => ['/blog/article/index']],
+                    ['label' => 'Categories', 'icon' => 'list-ol', 'url' => ['/blog/category/index']],
+
                     ['label' => 'Astrale', 'header' => true, 'visible'],
                     ['label' => 'Users', 'icon' => 'users', 'url' => ['/astrale/users/index']],
                     ['label' => 'Daily', 'icon' => 'calendar-day', 'url' => ['/astrale/daily/index']],

@@ -124,4 +124,5 @@ class BlgArticle extends \yii\db\ActiveRecord
     {
         return $this->hasMany(BlgArticleHasTag::class, ['id_article' => 'id']);
     }
+
 }

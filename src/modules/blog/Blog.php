@@ -8,17 +8,12 @@ namespace app\modules\blog;
 class Blog extends \yii\base\Module
 {
     /**
-     * {@inheritdoc}
+     * @var string
      */
-    public $controllerNamespace = 'app\modules\blog\controllers';
+    public $defaultRoute = 'blog';
 
     /**
      * {@inheritdoc}
      */
-    public function init()
-    {
-        parent::init();
-
-        // custom initialization code goes here
-    }
+    public $controllerNamespace = 'app\modules\blog\controllers';
 }
