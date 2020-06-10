@@ -3,6 +3,8 @@
 namespace app\models\blog;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "blg_article_has_content".
@@ -25,6 +27,22 @@ use Yii;
 class BlgArticleHasContent extends \yii\db\ActiveRecord
 {
     /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title',
+                'ensureUnique' => true,
+                'immutable' => false
+            ],
+        ];
+    }
+
+    /**
      * {@inheritdoc}
      */
     public static function tableName()
@@ -38,9 +56,11 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_article', 'id_language', 'id_state'], 'required'],
+            [['id_article', 'id_language', 'id_state', 'title'], 'required'],
             [['id_article', 'id_language', 'id_state', 'updated_at', 'created_at'], 'integer'],
             [['content'], 'string'],
+            [['slug'], 'string', 'max' => 200],
+            [['slug'], 'unique'],
             [['title'], 'string', 'max' => 120],
             [['resume'], 'string', 'max' => 200],
             [['id_article'], 'exist', 'skipOnError' => true, 'targetClass' => BlgArticle::class, 'targetAttribute' => ['id_article' => 'id']],
@@ -64,6 +84,7 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
             'content' => 'Content',
             'updated_at' => 'Updated At',
             'created_at' => 'Created At',
+            'slug' => 'Slug',
         ];
     }
 

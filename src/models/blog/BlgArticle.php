@@ -4,6 +4,8 @@ namespace app\models\blog;
 
 use app\models\app\User;
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "blg_article".
@@ -29,6 +31,17 @@ use Yii;
  */
 class BlgArticle extends \yii\db\ActiveRecord
 {
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -43,11 +56,9 @@ class BlgArticle extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_blog', 'id_user', 'id_category', 'words_count', 'claps', 'featured', 'time_to_read', 'updated_at', 'created_at'], 'integer'],
+            [['id_blog', 'id_user', 'id_category', 'words_count', 'claps', 'featured', 'time_to_read'], 'integer'],
             [['id_user', 'id_category'], 'required'],
             [['date'], 'safe'],
-            [['slug'], 'string', 'max' => 200],
-            [['slug'], 'unique'],
             [['id_blog'], 'exist', 'skipOnError' => true, 'targetClass' => BlgBlog::class, 'targetAttribute' => ['id_blog' => 'id']],
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => BlgCategory::class, 'targetAttribute' => ['id_category' => 'id']],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],

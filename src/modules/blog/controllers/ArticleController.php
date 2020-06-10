@@ -2,6 +2,8 @@
 
 namespace app\modules\blog\controllers;
 
+use app\models\blog\BlgArticleHasContent;
+use Exception;
 use Yii;
 use app\models\blog\BlgArticle;
 use app\models\blog\BlgArticleSearch;
@@ -21,7 +23,7 @@ class ArticleController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -37,10 +39,36 @@ class ArticleController extends Controller
     {
         $searchModel = new BlgArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $article = new BlgArticle(['id_user' => Yii::$app->user->identity->id]);
+        $content = new BlgArticleHasContent(['id_language' => 1]);
+
+        if(Yii::$app->request->isPost){
+            $db = Yii::$app->db->beginTransaction();
+            try {
+
+                $article->load(Yii::$app->request->post());
+                if(!$article->save()){
+                    throw new \Exception();
+                }
+
+                $content->load(Yii::$app->request->post());
+                $content->id_article = $article->id;
+                if(!$content->save()){
+                    throw new \Exception();
+                }
+
+                $db->commit();
+            } catch(Exception $e){
+                Yii::$app->session->addFlash("error", "Something went wrong creating the article");
+                $db->rollBack();
+            }
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'article' => $article,
+            'content' => $content
         ]);
     }
 

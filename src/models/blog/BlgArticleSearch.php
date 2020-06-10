@@ -18,7 +18,7 @@ class BlgArticleSearch extends BlgArticle
     {
         return [
             [['id', 'id_blog', 'id_user', 'id_category', 'words_count', 'claps', 'featured', 'time_to_read', 'updated_at', 'created_at'], 'integer'],
-            [['date', 'slug'], 'safe'],
+            [['date'], 'safe'],
         ];
     }
 
@@ -70,8 +70,6 @@ class BlgArticleSearch extends BlgArticle
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
         ]);
-
-        $query->andFilterWhere(['like', 'slug', $this->slug]);
 
         return $dataProvider;
     }
