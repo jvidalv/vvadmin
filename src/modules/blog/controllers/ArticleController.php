@@ -40,7 +40,7 @@ class ArticleController extends Controller
         $searchModel = new BlgArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $article = new BlgArticle(['id_user' => Yii::$app->user->identity->id]);
-        $content = new BlgArticleHasContent(['id_language' => 1]);
+        $content = new BlgArticleHasContent(['id_language' => 1, 'id_state' => 1]);
 
         if(Yii::$app->request->isPost){
             $db = Yii::$app->db->beginTransaction();
@@ -57,6 +57,7 @@ class ArticleController extends Controller
                     throw new \Exception();
                 }
 
+                Yii::$app->session->addFlash("success", "Nice! Article created!");
                 $db->commit();
             } catch(Exception $e){
                 Yii::$app->session->addFlash("error", "Something went wrong creating the article");
@@ -75,54 +76,17 @@ class ArticleController extends Controller
     /**
      * Displays a single BlgArticle model.
      * @param integer $id
+     * @param int $idLang
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id, int $idLang)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'translation' => $this->findTranslation($id, $idLang)
         ]);
     }
-
-    /**
-     * Creates a new BlgArticle model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new BlgArticle();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Updates an existing BlgArticle model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
     /**
      * Deletes an existing BlgArticle model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -147,6 +111,22 @@ class ArticleController extends Controller
     protected function findModel($id)
     {
         if (($model = BlgArticle::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Finds the BlgArticleHasContent model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return BlgArticleHasContent the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findTranslation($id, $idLang)
+    {
+        if (($model = BlgArticleHasContent::findOne(['id_article' => $id, 'id_language' => $idLang])) !== null) {
             return $model;
         }
 
