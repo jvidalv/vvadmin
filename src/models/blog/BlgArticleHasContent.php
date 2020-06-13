@@ -76,9 +76,9 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_article' => 'Id Article',
-            'id_language' => 'Id Language',
-            'id_state' => 'Id State',
+            'id_article' => 'Article',
+            'id_language' => 'Language',
+            'id_state' => 'State',
             'title' => 'Title',
             'resume' => 'Resume',
             'content' => 'Content',
@@ -126,5 +126,15 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     public function getState()
     {
         return $this->hasOne(BlgState::class, ['id' => 'id_state']);
+    }
+
+    /**
+     * Gets query for [[BlgArticleHasContent]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOtherTranslations()
+    {
+        return $this->hasMany(BlgArticleHasContent::class, ['id_article' => 'id_article']);
     }
 }

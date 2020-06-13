@@ -6,6 +6,7 @@ use dosamigos\tinymce\TinyMce;
 use kartik\datetime\DateTimePicker;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
 
@@ -22,11 +23,6 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
 <?php $form = ActiveForm::begin() ?>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-
-        </div>
-    </div>
     <div class="row">
         <div class="col-12 col-lg-9">
             <div class="loader-tinymce">
@@ -77,18 +73,15 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
         </div>
         <div class="col-lg-3">
             <div class="card">
-                <div class="card-header d-flex align-items-center">
-                    <?= Html::tag('strong', Yii::t('app', 'translations')) ?>
-                    <span class="cursor-pointer ml-auto" data-target="#modal-sync"
-                          data-toggle="modal">🔁</span>
-                </div>
                 <div class="card-body">
+                    <?php foreach($translation->otherTranslations as $trans){
+                        /* @var \app\models\blog\BlgArticleHasContent $trans */
+                        if($trans->id === $translation->id) continue;
+                        echo Html::a($trans->id_language, Url::to(['view', 'id' => $trans->id, 'idLang' => $trans->id_language]), ['class' => 'anchor-section']) ;
+                    } ?>
                 </div>
             </div>
         <div class="card">
-            <div class="card-header">
-                <strong><?= Yii::t('app', 'others') ?></strong>
-            </div>
             <div class="card-body">
                 <?= $form->field($translation, 'id_state')->dropDownList(ArrayHelper::map(BlgState::find()->all(), 'id', 'code')) ?>
                 <?= $form->field($model, 'id_category')->dropDownList(ArrayHelper::map(BlgCategory::find()->where(['id_blog' => $model->id_blog])->all(), 'id', 'name')) ?>
@@ -126,15 +119,19 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
                 </div>
             </div>
         </div>
-        <div class="sticky-top">
-            <div class="d-flex">
-                <?= Html::submitButton('💾 ' . Yii::t('app', 'save'), ['class' => 'au-btn au-btn-icon au-btn--green justify-content-end flex-grow-1 mb-4']) ?>
+        <div class="position-sticky">
+            <div class="d-flex mb-3">
+                <?= Html::submitButton('Save', ['class' => 'btn btn-primary btn-block']) ?>
             </div>
             <div class="card">
                 <div class="card-header">
-                    <strong><?= Yii::t('app', 'sections') ?></strong>
+                    <strong>Sections</strong>
                 </div>
                 <div class="card-body overflow-hidden">
+                    <?php foreach($translation->blgArticleHasAnchors as $anchor){
+                        /* @var \app\models\blog\BlgArticleHasAnchor $anchor */
+                        echo Html::a($anchor->content, '#' . $anchor->anchor, ['class' => 'anchor-section']) . '</br>';
+                    } ?>
                 </div>
             </div>
         </div>

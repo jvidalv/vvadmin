@@ -1,0 +1,28 @@
+/** Overriding TinyMce menu bar to make it sticky */
+
+.tox-editor-container, .tox-tinymce{
+    overflow: unset !important;
+}
+.tox-toolbar{
+    position: sticky !important;
+    top: 0;
+    z-index: 999;
+}
+
+/** Customs */
+.cover-no-repeat{
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    height: 150px !important;
+}
+
+.loader-tinymce{
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    font-size: 138px;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+}
