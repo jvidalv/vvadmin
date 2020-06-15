@@ -83,6 +83,7 @@ class BlgArticle extends \yii\db\ActiveRecord
             'slug' => 'Slug',
             'updated_at' => 'Updated At',
             'created_at' => 'Created At',
+            'title' => 'Title',
         ];
     }
 
@@ -134,6 +135,17 @@ class BlgArticle extends \yii\db\ActiveRecord
     public function getBlgArticleHasTags()
     {
         return $this->hasMany(BlgArticleHasTag::class, ['id_article' => 'id']);
+    }
+
+    /**
+     * Blog title by language
+     * @param int|null $idLanguage
+     * @return string|null
+     */
+    public function getTitle(?int $idLanguage = 1) : ?string
+    {
+        $content = BlgArticleHasContent::findOne(['id_article' => $this->id, 'id_language' => $idLanguage]);
+        return $content->title ?? null;
     }
 
 }

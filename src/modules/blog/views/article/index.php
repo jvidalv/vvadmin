@@ -40,18 +40,25 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
                 'heading' => "List",
             ],
             'columns' => [
-                'id_blog',
-                'id_user',
-                'id_category',
-                'date',
-                //'words_count',
-                //'claps',
-                //'featured',
-                //'time_to_read:datetime',
-                //'slug',
-                //'updated_at',
-                //'created_at',
-
+                [
+                    'attribute' => 'id_blog',
+                    'value' => fn($model) => $model->blog->name ?? null,
+                ],
+                [
+                    'attribute' => 'id_user',
+                    'value' => fn($model) => $model->user->username ?? null,
+                ],
+                [
+                    'attribute' => 'id_category',
+                    'value' => fn($model) => $model->category->code ?? null,
+                ],
+                'title',
+                'date:date',
+                [
+                        'label' => 'Actions',
+                        'format' => 'raw',
+                        'value' => fn($model) => 'hola',
+                ],
                 ['class' => 'yii\grid\ActionColumn'],
             ],
         ]); ?>

@@ -17,8 +17,8 @@ class BlgArticleSearch extends BlgArticle
     public function rules()
     {
         return [
-            [['id', 'id_blog', 'id_user', 'id_category', 'words_count', 'claps', 'featured', 'time_to_read', 'updated_at', 'created_at'], 'integer'],
-            [['date'], 'safe'],
+            [['id', 'id_blog', 'id_user', 'id_category', 'words_count', 'claps', 'featured', 'time_to_read'], 'integer'],
+            [['date', 'title'], 'safe'],
         ];
     }
 
@@ -27,7 +27,6 @@ class BlgArticleSearch extends BlgArticle
      */
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
@@ -40,9 +39,8 @@ class BlgArticleSearch extends BlgArticle
      */
     public function search($params)
     {
-        $query = BlgArticle::find();
-
-        // add conditions that should always apply here
+        $query = BlgArticle::find()->alias('a');
+        $query->leftJoin('blg_article_has_content c', 'c.id_article = a.id');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -51,14 +49,10 @@ class BlgArticleSearch extends BlgArticle
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
             'id_blog' => $this->id_blog,
             'id_user' => $this->id_user,
             'id_category' => $this->id_category,
@@ -67,8 +61,7 @@ class BlgArticleSearch extends BlgArticle
             'claps' => $this->claps,
             'featured' => $this->featured,
             'time_to_read' => $this->time_to_read,
-            'updated_at' => $this->updated_at,
-            'created_at' => $this->created_at,
+            'c.title' => $this->title,
         ]);
 
         return $dataProvider;
