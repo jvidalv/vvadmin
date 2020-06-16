@@ -41,6 +41,12 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
             ],
             'columns' => [
                 [
+                    'attribute' => 'featured',
+                    'contentOptions' => ['style' => 'width:3%;text-align:center'],
+                    'format' => 'raw',
+                    'value' => fn($model) => Html::a($model->featured ? 'Yes' : 'No', ['featured?id=' . $model->id], ['class' => "badge badge-" . ($model->featured ? 'warning' : 'primary'), 'data-confirm' => 'Are you sure?']),
+                ],
+                [
                     'attribute' => 'id_blog',
                     'value' => fn($model) => $model->blog->name ?? null,
                 ],
@@ -55,9 +61,9 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
                 'title',
                 'date:date',
                 [
-                        'label' => 'Actions',
-                        'format' => 'raw',
-                        'value' => fn($model) => 'hola',
+                    'label' => 'Actions',
+                    'format' => 'raw',
+                    'value' => fn($model) => 'hola',
                 ],
                 ['class' => 'yii\grid\ActionColumn'],
             ],
