@@ -3,10 +3,11 @@
 use app\models\blog\BlgBlog;
 use app\models\blog\BlgCategory;
 use app\widgets\GridView;
+use kartik\icons\Icon;
 use kartik\select2\Select2;
 use yii\bootstrap4\Modal;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
+use \yii\bootstrap4\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -19,20 +20,21 @@ $this->title = 'Articles';
 $this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => '/blog'];
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
 ?>
-    <div class="container-fluid">
+    <div class="container-fluid just">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
+            //'filterModel' => $searchModel,
             'toolbar' => [
                 [
                     'content' =>
+                    Html::textInput("text", '', ['class' => 'mx-1', 'placeholder' => '🔎 Filter here..']) .
                         Html::button('<i class="fas fa-plus"></i>', [
                             'class' => 'btn btn-success',
                             'title' => 'Create article',
                             'data-toggle' => 'modal',
                             'data-target' => '#modal-create'
                         ]),
-                    'options' => ['class' => 'btn-group mr-2']
+                    'options' => ['class' => 'btn-group d-flex justify-content-center ']
                 ],
             ],
             'panel' => [
@@ -41,9 +43,15 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
             ],
             'columns' => [
                 [
-                    'attribute' => 'featured',
+                    'label' => '',
                     'contentOptions' => ['style' => 'width:3%;text-align:center'],
                     'format' => 'raw',
+                    'value' => fn($model) => Icon::show("edit") ,
+                ],
+                [
+                    'attribute' => 'featured',
+                    'format' => 'raw',
+                    'contentOptions' => ['style' => 'width:1%;text-align:center'],
                     'value' => fn($model) => Html::a($model->featured ? 'Yes' : 'No', ['featured?id=' . $model->id], ['class' => "badge badge-" . ($model->featured ? 'warning' : 'primary'), 'data-confirm' => 'Are you sure?']),
                 ],
                 [
@@ -60,12 +68,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
                 ],
                 'title',
                 'date:date',
-                [
-                    'label' => 'Actions',
-                    'format' => 'raw',
-                    'value' => fn($model) => 'hola',
-                ],
-                ['class' => 'yii\grid\ActionColumn'],
+
             ],
         ]); ?>
     </div>
