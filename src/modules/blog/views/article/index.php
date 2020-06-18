@@ -8,6 +8,7 @@ use kartik\select2\Select2;
 use yii\bootstrap4\Modal;
 use yii\helpers\ArrayHelper;
 use \yii\bootstrap4\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -46,7 +47,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
                     'label' => '',
                     'contentOptions' => ['style' => 'width:3%;text-align:center'],
                     'format' => 'raw',
-                    'value' => fn($model) => Icon::show("edit") ,
+                    'value' => fn($model) => Html::a(Icon::show("edit"), Url::to(['view', 'id' => $model->id, 'idLang' => 1])),
                 ],
                 [
                     'attribute' => 'featured',
