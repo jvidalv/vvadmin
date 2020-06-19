@@ -72,68 +72,70 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
 
         </div>
         <div class="col-lg-3">
+            <?php if ($translation->otherTranslations): ?>
+                <div class="card">
+                    <div class="card-body">
+                        <?php foreach ($translation->otherTranslations as $trans) {
+                            /* @var \app\models\blog\BlgArticleHasContent $trans */
+                            if ($trans->id === $translation->id) continue;
+                            echo Html::a($trans->id_language, Url::to(['view', 'id' => $trans->id, 'idLang' => $trans->id_language]), ['class' => 'anchor-section']);
+                        } ?>
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="card">
                 <div class="card-body">
-                    <?php foreach($translation->otherTranslations as $trans){
-                        /* @var \app\models\blog\BlgArticleHasContent $trans */
-                        if($trans->id === $translation->id) continue;
-                        echo Html::a($trans->id_language, Url::to(['view', 'id' => $trans->id, 'idLang' => $trans->id_language]), ['class' => 'anchor-section']) ;
-                    } ?>
+                    <?= $form->field($translation, 'id_state')->dropDownList(ArrayHelper::map(BlgState::find()->all(), 'id', 'code')) ?>
+                    <?= $form->field($model, 'id_category')->dropDownList(ArrayHelper::map(BlgCategory::find()->where(['id_blog' => $model->id_blog])->all(), 'id', 'name')) ?>
+                    <?= $form->field($model, 'date')->widget(DateTimePicker::class, [
+                        'type' => DateTimePicker::TYPE_BUTTON,
+                        'layout' => Html::tag('div', '{picker} {input}', ['class' => 'd-flex']),
+                        'options' => [
+                            'type' => 'text',
+                            'placeholder' => Yii::t('app', 'select a date'),
+                            'readonly' => true,
+                            'class' => 'form-control',
+                        ],
+                        'pluginOptions' => [
+                            'format' => 'dd-mm-yyyy hh:ii',
+                            'autoclose' => true,
+                        ]
+                    ]); ?>
                 </div>
             </div>
-        <div class="card">
-            <div class="card-body">
-                <?= $form->field($translation, 'id_state')->dropDownList(ArrayHelper::map(BlgState::find()->all(), 'id', 'code')) ?>
-                <?= $form->field($model, 'id_category')->dropDownList(ArrayHelper::map(BlgCategory::find()->where(['id_blog' => $model->id_blog])->all(), 'id', 'name')) ?>
-                <?= $form->field($model, 'date')->widget(DateTimePicker::class, [
-                    'type' => DateTimePicker::TYPE_BUTTON,
-                    'layout' => Html::tag('div', '{picker} {input}', ['class' => 'd-flex']),
-                    'options' => [
-                        'type' => 'text',
-                        'placeholder' => Yii::t('app', 'select a date'),
-                        'readonly' => true,
-                        'class' => 'form-control',
-                    ],
-                    'pluginOptions' => [
-                        'format' => 'dd-mm-yyyy hh:ii',
-                        'autoclose' => true,
-                    ]
-                ]); ?>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header cursor-pointer text-center" data-target="#extra-information"
-                         data-toggle="modal">
-                        <strong><?= Yii::t('app', 'extra') ?></strong>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header cursor-pointer text-center" data-target="#extra-information"
+                             data-toggle="modal">
+                            <strong><?= Yii::t('app', 'extra') ?></strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header cursor-pointer text-center" data-target="#modal-sources"
+                             data-toggle="modal">
+                            <strong>Sources</strong>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="position-sticky">
+                <div class="d-flex mb-3">
+                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary btn-block']) ?>
+                </div>
                 <div class="card">
-                    <div class="card-header cursor-pointer text-center" data-target="#modal-sources"
-                         data-toggle="modal">
-                        <strong>Sources</strong>
+                    <div class="card-header">
+                        <strong>Sections</strong>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="position-sticky">
-            <div class="d-flex mb-3">
-                <?= Html::submitButton('Save', ['class' => 'btn btn-primary btn-block']) ?>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <strong>Sections</strong>
-                </div>
-                <div class="card-body overflow-hidden">
-                    <?php foreach($translation->blgArticleHasAnchors as $anchor){
-                        /* @var \app\models\blog\BlgArticleHasAnchor $anchor */
-                        echo Html::a($anchor->content, '#' . $anchor->anchor, ['class' => 'anchor-section']) . '</br>';
-                    } ?>
+                    <div class="card-body overflow-hidden">
+                        <?php foreach ($translation->blgArticleHasAnchors as $anchor) {
+                            /* @var \app\models\blog\BlgArticleHasAnchor $anchor */
+                            echo Html::a($anchor->content, '#' . $anchor->anchor, ['class' => 'anchor-section']) . '</br>';
+                        } ?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
