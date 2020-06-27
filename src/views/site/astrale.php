@@ -55,14 +55,6 @@ $this->title = 'Astrale';
             </div>
         </div>
     </div>
-    <div class="bg-dark mr-md-3 py-4 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-4">
-            <img src="/images/ios.png" class="d-block mx-auto" height="100"/>
-        </div>
-        <div class="my-4">
-            <a class="btn btn-info" href="/contactar">App Store</a>
-        </div>
-    </div>
 </div>
 <?php $this->endBody() ?>
 <footer class="container py-5">

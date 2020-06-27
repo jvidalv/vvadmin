@@ -56,7 +56,7 @@ class GridView extends \kartik\grid\GridView
 
 
     /**
-     * Lo extendemos para corregir como se ve al mostrar el loading que es muy feos
+     * Lo extendemos para corregir como se ve al mostrar el loading que es muy feo
      */
     protected function beginPjax()
     {
