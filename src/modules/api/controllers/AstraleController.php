@@ -39,9 +39,9 @@ class AstraleController extends ApiController
     /**
      * @param string $day
      * @param string $sign
-     * @return Daily|null
+     * @return Daily
      */
-    public function actionDaily(string $day, string $sign): ?Daily
+    public function actionDaily(string $day, string $sign): Daily
     {
         return  Daily::findOne(['sign' => $sign, 'day' => $day]) ?? Daily::findOne(['sign' => $sign]);
     }
