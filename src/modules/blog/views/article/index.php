@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
     <div class="container-fluid just">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
-            //'filterModel' => $searchModel,
+            'filterModel' => $searchModel,
             'toolbar' => [
                 [
                     'content' =>
