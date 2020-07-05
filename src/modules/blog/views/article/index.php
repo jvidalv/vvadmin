@@ -1,21 +1,23 @@
 <?php
 
+use app\models\blog\BlgArticle;
+use app\models\blog\BlgArticleHasContent;
 use app\models\blog\BlgBlog;
 use app\models\blog\BlgCategory;
 use app\widgets\GridView;
 use kartik\icons\Icon;
 use kartik\select2\Select2;
+use yii\bootstrap4\Html;
 use yii\bootstrap4\Modal;
 use yii\helpers\ArrayHelper;
-use \yii\bootstrap4\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\blog\BlgArticleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $article \app\models\blog\BlgArticle */
-/* @var $content \app\models\blog\BlgArticleHasContent */
+/* @var $article BlgArticle */
+/* @var $content BlgArticleHasContent */
 
 $this->title = 'Articles';
 $this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => '/blog'];
@@ -28,7 +30,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
             'toolbar' => [
                 [
                     'content' =>
-                    Html::textInput("text", '', ['class' => 'mx-1', 'placeholder' => '🔎 Filter here..']) .
+                        Html::textInput("text", '', ['class' => 'mx-1', 'placeholder' => '🔎 Filter here..']) .
                         Html::button('<i class="fas fa-plus"></i>', [
                             'class' => 'btn btn-success',
                             'title' => 'Create article',

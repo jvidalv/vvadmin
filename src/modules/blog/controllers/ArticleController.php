@@ -2,14 +2,14 @@
 
 namespace app\modules\blog\controllers;
 
+use app\models\blog\BlgArticle;
 use app\models\blog\BlgArticleHasContent;
+use app\models\blog\BlgArticleSearch;
 use Exception;
 use Yii;
-use app\models\blog\BlgArticle;
-use app\models\blog\BlgArticleSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ArticleController implements the CRUD actions for BlgArticle model.
@@ -42,24 +42,24 @@ class ArticleController extends Controller
         $article = new BlgArticle(['id_user' => Yii::$app->user->identity->id]);
         $content = new BlgArticleHasContent(['id_language' => 1, 'id_state' => 1]);
 
-        if(Yii::$app->request->isPost){
+        if (Yii::$app->request->isPost) {
             $db = Yii::$app->db->beginTransaction();
             try {
 
                 $article->load(Yii::$app->request->post());
-                if(!$article->save()){
-                    throw new \Exception();
+                if (!$article->save()) {
+                    throw new Exception();
                 }
 
                 $content->load(Yii::$app->request->post());
                 $content->id_article = $article->id;
-                if(!$content->save()){
-                    throw new \Exception();
+                if (!$content->save()) {
+                    throw new Exception();
                 }
 
                 Yii::$app->session->addFlash("success", "Nice! Article created!");
                 $db->commit();
-            } catch(Exception $e){
+            } catch (Exception $e) {
                 Yii::$app->session->addFlash("error", "Something went wrong creating the article");
                 $db->rollBack();
             }
@@ -86,19 +86,6 @@ class ArticleController extends Controller
             'model' => $this->findModel($id),
             'translation' => $this->findTranslation($id, $idLang)
         ]);
-    }
-    /**
-     * Deletes an existing BlgArticle model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
     }
 
     /**
@@ -131,5 +118,19 @@ class ArticleController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Deletes an existing BlgArticle model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
     }
 }

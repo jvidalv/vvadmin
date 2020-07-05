@@ -2,12 +2,12 @@
 
 namespace app\modules\blog\controllers;
 
-use Yii;
 use app\models\blog\BlgCategory;
 use app\models\blog\BlgCategorySearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CategoryController implements the CRUD actions for BlgCategory model.
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'model' =>$model
+            'model' => $model
         ]);
     }
 

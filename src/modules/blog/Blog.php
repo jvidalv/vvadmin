@@ -3,12 +3,14 @@
 namespace app\modules\blog;
 
 use Yii;
+use yii\base\InvalidConfigException;
+use yii\base\Module;
 use yii\web\JqueryAsset;
 
 /**
  * blog module definition class
  */
-class Blog extends \yii\base\Module
+class Blog extends Module
 {
     /**
      * @var string
@@ -24,7 +26,7 @@ class Blog extends \yii\base\Module
      * @param $filename
      * @param array $options
      * @param null $key
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function registerCssFile($filename, $options = [], $key = null)
     {
@@ -38,7 +40,7 @@ class Blog extends \yii\base\Module
      * @param $filename
      * @param array $options
      * @param null $key
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function registerJsFile($filename, $options = [], $key = null)
     {

@@ -1,5 +1,7 @@
 <?php
 
+use app\models\blog\BlgArticleHasAnchor;
+use app\models\blog\BlgArticleHasContent;
 use app\models\blog\BlgCategory;
 use app\models\blog\BlgState;
 use dosamigos\tinymce\TinyMce;
@@ -76,7 +78,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
                 <div class="card">
                     <div class="card-body">
                         <?php foreach ($translation->otherTranslations as $trans) {
-                            /* @var \app\models\blog\BlgArticleHasContent $trans */
+                            /* @var BlgArticleHasContent $trans */
                             if ($trans->id === $translation->id) continue;
                             echo Html::a($trans->id_language, Url::to(['view', 'id' => $trans->id, 'idLang' => $trans->id_language]), ['class' => 'anchor-section']);
                         } ?>
@@ -131,7 +133,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => false];
                     </div>
                     <div class="card-body overflow-hidden">
                         <?php foreach ($translation->blgArticleHasAnchors as $anchor) {
-                            /* @var \app\models\blog\BlgArticleHasAnchor $anchor */
+                            /* @var BlgArticleHasAnchor $anchor */
                             echo Html::a($anchor->content, '#' . $anchor->anchor, ['class' => 'anchor-section']) . '</br>';
                         } ?>
                     </div>
