@@ -2,9 +2,10 @@
 
 namespace app\models\blog;
 
-use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_article_has_content".
@@ -24,8 +25,16 @@ use yii\behaviors\TimestampBehavior;
  * @property BlgLanguage $language
  * @property BlgState $state
  */
-class BlgArticleHasContent extends \yii\db\ActiveRecord
+class BlgArticleHasContent extends ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'blg_article_has_content';
+    }
+
     /**
      * @inheritdoc
      */
@@ -40,14 +49,6 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
                 'immutable' => false
             ],
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'blg_article_has_content';
     }
 
     /**
@@ -91,7 +92,7 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticleHasAnchors]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgArticleHasAnchors()
     {
@@ -101,7 +102,7 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Article]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getArticle()
     {
@@ -111,7 +112,7 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Language]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getLanguage()
     {
@@ -121,7 +122,7 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     /**
      * Gets query for [[State]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getState()
     {
@@ -131,7 +132,7 @@ class BlgArticleHasContent extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticleHasContent]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getOtherTranslations()
     {

@@ -2,7 +2,8 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_article_has_tag".
@@ -13,7 +14,7 @@ use Yii;
  *
  * @property BlgArticle $article
  */
-class BlgArticleHasTag extends \yii\db\ActiveRecord
+class BlgArticleHasTag extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -52,7 +53,7 @@ class BlgArticleHasTag extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Article]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getArticle()
     {

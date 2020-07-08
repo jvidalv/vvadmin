@@ -2,7 +2,8 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_language".
@@ -13,7 +14,7 @@ use Yii;
  *
  * @property BlgArticleHasContent[] $blgArticleHasContents
  */
-class BlgLanguage extends \yii\db\ActiveRecord
+class BlgLanguage extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -51,7 +52,7 @@ class BlgLanguage extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticleHasContents]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgArticleHasContents()
     {

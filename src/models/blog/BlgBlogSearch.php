@@ -4,7 +4,6 @@ namespace app\models\blog;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\blog\BlgBlog;
 
 /**
  * BlgBlogSearch represents the model behind the search form of `app\models\blog\BlgBlog`.

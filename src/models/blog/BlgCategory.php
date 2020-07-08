@@ -2,7 +2,8 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_category".
@@ -18,7 +19,7 @@ use Yii;
  * @property BlgArticle[] $blgArticles
  * @property BlgBlog $blog
  */
-class BlgCategory extends \yii\db\ActiveRecord
+class BlgCategory extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -63,7 +64,7 @@ class BlgCategory extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticles]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgArticles()
     {
@@ -73,7 +74,7 @@ class BlgCategory extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Blog]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlog()
     {

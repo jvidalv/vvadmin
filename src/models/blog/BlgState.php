@@ -2,7 +2,8 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_state".
@@ -13,7 +14,7 @@ use Yii;
  *
  * @property BlgArticleHasContent[] $blgArticleHasContents
  */
-class BlgState extends \yii\db\ActiveRecord
+class BlgState extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -50,7 +51,7 @@ class BlgState extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticleHasContents]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgArticleHasContents()
     {

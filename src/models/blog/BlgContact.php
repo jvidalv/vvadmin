@@ -2,7 +2,8 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_contact".
@@ -17,7 +18,7 @@ use Yii;
  *
  * @property BlgBlog $blog
  */
-class BlgContact extends \yii\db\ActiveRecord
+class BlgContact extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -60,7 +61,7 @@ class BlgContact extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Blog]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlog()
     {

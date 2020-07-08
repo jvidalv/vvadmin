@@ -2,7 +2,8 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_blog".
@@ -19,7 +20,7 @@ use Yii;
  * @property BlgContact[] $blgContacts
  * @property BlgNewsletter[] $blgNewsletters
  */
-class BlgBlog extends \yii\db\ActiveRecord
+class BlgBlog extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -62,7 +63,7 @@ class BlgBlog extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticles]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgArticles()
     {
@@ -72,7 +73,7 @@ class BlgBlog extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgCategories]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgCategories()
     {
@@ -82,7 +83,7 @@ class BlgBlog extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgContacts]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgContacts()
     {
@@ -92,7 +93,7 @@ class BlgBlog extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgNewsletters]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgNewsletters()
     {

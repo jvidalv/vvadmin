@@ -2,7 +2,8 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_article_has_anchor".
@@ -14,7 +15,7 @@ use Yii;
  *
  * @property BlgArticleHasContent $content
  */
-class BlgArticleHasAnchor extends \yii\db\ActiveRecord
+class BlgArticleHasAnchor extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -54,7 +55,7 @@ class BlgArticleHasAnchor extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Content]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getContent()
     {

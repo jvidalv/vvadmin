@@ -2,7 +2,7 @@
 
 namespace app\models\blog;
 
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_article_has_source".
@@ -15,7 +15,7 @@ use Yii;
  * @property string|null $url
  * @property int $visible
  */
-class BlgArticleHasSource extends \yii\db\ActiveRecord
+class BlgArticleHasSource extends ActiveRecord
 {
     /**
      * {@inheritdoc}

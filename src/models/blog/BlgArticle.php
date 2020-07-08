@@ -3,9 +3,9 @@
 namespace app\models\blog;
 
 use app\models\app\User;
-use Yii;
-use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "blg_article".
@@ -29,8 +29,16 @@ use yii\behaviors\TimestampBehavior;
  * @property BlgArticleHasContent[] $blgArticleHasContents
  * @property BlgArticleHasTag[] $blgArticleHasTags
  */
-class BlgArticle extends \yii\db\ActiveRecord
+class BlgArticle extends ActiveRecord
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'blg_article';
+    }
 
     /**
      * @inheritdoc
@@ -40,14 +48,6 @@ class BlgArticle extends \yii\db\ActiveRecord
         return [
             TimestampBehavior::class,
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'blg_article';
     }
 
     /**
@@ -90,7 +90,7 @@ class BlgArticle extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Blog]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlog()
     {
@@ -100,7 +100,7 @@ class BlgArticle extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Category]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCategory()
     {
@@ -110,7 +110,7 @@ class BlgArticle extends \yii\db\ActiveRecord
     /**
      * Gets query for [[User]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUser()
     {
@@ -120,7 +120,7 @@ class BlgArticle extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticleHasContents]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgArticleHasContents()
     {
@@ -130,7 +130,7 @@ class BlgArticle extends \yii\db\ActiveRecord
     /**
      * Gets query for [[BlgArticleHasTags]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBlgArticleHasTags()
     {
@@ -142,7 +142,7 @@ class BlgArticle extends \yii\db\ActiveRecord
      * @param int|null $idLanguage
      * @return string|null
      */
-    public function getTitle(?int $idLanguage = 1) : ?string
+    public function getTitle(?int $idLanguage = 1): ?string
     {
         $content = BlgArticleHasContent::findOne(['id_article' => $this->id, 'id_language' => $idLanguage]);
         return $content->title ?? null;
