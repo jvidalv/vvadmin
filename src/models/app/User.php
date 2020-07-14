@@ -37,6 +37,42 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * {@inheritdoc}
      */
+    public static function findIdentity($id): ?User
+    {
+        return static::findOne(['id' => $id]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentityByAccessToken($token, $type = null): ?User
+    {
+        return static::findOne(['access_token' => $token]);
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername($username): ?User
+    {
+        return static::findOne(['username' => $username]);
+    }
+
+    /**
+     * @param $email
+     * @return User|null
+     */
+    public static function findByEmail($email): ?User
+    {
+        return static::findOne(['email' => $email]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function rules()
     {
         return [
@@ -69,42 +105,6 @@ class User extends ActiveRecord implements IdentityInterface
             'updated_at' => 'Updated At',
             'created_at' => 'Created At',
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentity($id): ?User
-    {
-        return static::findOne(['id' => $id]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentityByAccessToken($token, $type = null): ?User
-    {
-        return static::findOne(['access_token' => $token]);
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username): ?User
-    {
-        return static::findOne(['username' => $username]);
-    }
-
-    /**
-     * @param $email
-     * @return User|null
-     */
-    public static function findByEmail($email): ?User
-    {
-        return static::findOne(['email' => $email]);
     }
 
     /**
@@ -153,7 +153,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $password
      * @throws Exception
      */
-    public function setPassword($password) :void
+    public function setPassword($password): void
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
@@ -162,7 +162,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Generates "remember me" authentication key
      * @throws Exception
      */
-    public function generateAuthKey() : void
+    public function generateAuthKey(): void
     {
         $this->auth_key = (new Security)->generateRandomKey();
     }
@@ -171,7 +171,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Generates new password reset token
      * @throws Exception
      */
-    public function generatePasswordResetToken() : void
+    public function generatePasswordResetToken(): void
     {
         $this->password_reset_token = (new Security)->generateRandomKey() . '_' . time();
     }
@@ -179,7 +179,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Removes password reset token
      */
-    public function removePasswordResetToken() : void
+    public function removePasswordResetToken(): void
     {
         $this->password_reset_token = null;
     }

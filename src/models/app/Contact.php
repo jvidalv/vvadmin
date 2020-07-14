@@ -2,8 +2,6 @@
 
 namespace app\models\app;
 
-use Yii;
-
 /**
  * This is the model class for table "app_contact".
  *
