@@ -14,17 +14,17 @@ $this->title = 'Users';
 
 <div class="row">
     <div class="col">
-            <?php
-            echo GridView::widget([
-                'dataProvider' => $provider,
-                'panel' => [
-                    'heading' => Icon::show('list'),
-                    'type' => 'card card-primary'
-                ],
-                'columns' => [
-                        'name', 'surname', 'phone', 'email'
-                ]
-            ]);
-            ?>
+        <?php
+        echo GridView::widget([
+            'dataProvider' => $provider,
+            'panel' => [
+                'heading' => Icon::show('list'),
+                'type' => 'card card-primary'
+            ],
+            'columns' => [
+                'name', 'surname', 'phone', 'email'
+            ]
+        ]);
+        ?>
     </div>
 </div>

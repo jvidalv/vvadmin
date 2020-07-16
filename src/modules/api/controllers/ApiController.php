@@ -3,9 +3,7 @@
 namespace app\modules\api\controllers;
 
 use app\modules\api\components\ApiAuth;
-use Exception;
 use yii\rest\Controller;
-use yii\web\HttpException;
 use yii\web\Response;
 
 /**
@@ -39,7 +37,8 @@ class ApiController extends Controller
     /**
      * @return string
      */
-    public function actionIndex(){
+    public function actionIndex()
+    {
         return '👋 It works! Check my blog at https://vvlog.dev';
     }
 

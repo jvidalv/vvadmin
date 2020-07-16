@@ -2,7 +2,6 @@
 
 namespace app\modules\astrale\controllers;
 
-use app\controllers\VController;
 use app\models\astrale\Message;
 use yii\data\ActiveDataProvider;
 

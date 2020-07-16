@@ -3,7 +3,6 @@
  * @var ActiveDataProvider $provider
  */
 
-use app\models\astrale\Message;
 use app\widgets\GridView;
 use kartik\icons\Icon;
 use yii\data\ActiveDataProvider;
@@ -23,8 +22,8 @@ $this->title = 'Messages';
                 'type' => 'card card-primary'
             ],
             'columns' => [
-                    'app',
-                    'name',
+                'app',
+                'name',
                 'email:email',
                 'question',
             ]

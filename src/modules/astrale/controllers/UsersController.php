@@ -2,14 +2,8 @@
 
 namespace app\modules\astrale\controllers;
 
-use app\controllers\VController;
-use app\models\astrale\Compatibility;
-use app\models\astrale\Daily;
-use app\models\astrale\Message;
 use app\models\astrale\User;
-use Yii;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
 
 /**
  * Class DailyController

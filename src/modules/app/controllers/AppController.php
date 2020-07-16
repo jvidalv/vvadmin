@@ -5,7 +5,6 @@ namespace app\modules\app\controllers;
 use app\controllers\VController;
 use app\models\app\Contact;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 
 /**
  * Default controller for the `app` module
