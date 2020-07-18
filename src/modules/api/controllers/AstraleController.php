@@ -9,7 +9,6 @@ use app\models\astrale\User;
 use Exception;
 use Yii;
 use yii\filters\VerbFilter;
-use yii\web\Response;
 
 /**
  * Class AstraleController
@@ -43,7 +42,7 @@ class AstraleController extends ApiController
      */
     public function actionDaily(string $day, string $sign): Daily
     {
-        return  Daily::findOne(['sign' => $sign, 'day' => $day]) ?? Daily::findOne(['sign' => $sign]);
+        return Daily::findOne(['sign' => $sign, 'day' => $day]) ?? Daily::findOne(['sign' => $sign]);
     }
 
     /**
@@ -84,10 +83,10 @@ class AstraleController extends ApiController
     {
         $user = null;
         $params = json_decode(Yii::$app->request->getRawBody(), true);
-        if(isset($params['expo_token'])){
+        if (isset($params['expo_token'])) {
             $user = User::findOne(['expo_token' => $params['expo_token']]);
         }
-        if($user){
+        if ($user) {
             $user->setAttributes($params, false);
             return $user->save();
         } else {
